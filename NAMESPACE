@@ -3,4 +3,4 @@
 
 import(tidyverse)
 
-export(merge.similar.terms)
+export(merge_similar_terms)
