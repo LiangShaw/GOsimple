@@ -11,7 +11,7 @@
 
 
 
-merge.similar.terms <- function(gostres.tab){
+merge_similar_terms <- function(gostres.tab){
 
   # step1: remove completely same term
   gostres.dedup.tab <-
