@@ -7,7 +7,8 @@
 merge_similar_terms(gostres.tab)
 }
 \arguments{
-\item{gostres.tab}{result table from gprofiler2::gost. intersection column is required in dataframe.}
+\item{gostres.tab}{result table from gprofiler2::gost. intersection column is required in dataframe.
+intersection is gene list.}
 }
 \value{
 a subset dataframe of input
@@ -17,6 +18,9 @@ merge similar GO term for dataframe output from gprofiler2
 }
 \details{
 none
+}
+\examples{
+merge_similar_terms(gostres)
 }
 \author{
 ShaoboLiang

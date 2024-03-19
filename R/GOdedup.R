@@ -2,17 +2,18 @@
 #' @details none
 #' @param
 #' gostres.tab result table from gprofiler2::gost. intersection column is required in dataframe.
+#' intersection is gene list.
 #' @author ShaoboLiang
 #' @export
 #' @return a subset dataframe of input
 #' @import tidyverse
-#' @example
-#' merge.similar.terms(gostres)
-
+#' @examples
+#' merge_similar_terms(gostres)
 
 
 merge_similar_terms <- function(gostres.tab){
 
+  # compulsory columns: term_name, intersection,
   # step1: remove completely same term
   gostres.dedup.tab <-
     gostres.tab[!duplicated(gostres.tab$intersection), ]
@@ -38,9 +39,9 @@ merge_similar_terms <- function(gostres.tab){
     i.term.genes <- gostres.dedup.1nd.merge.tab[i,'intersection.list']
 
     a.list <- c()
-    for (j in seq(1,nrow(gostres.dedup.1nd.merge.tab))){
-      j.term.name <- gostres.dedup.1nd.merge.tab[j,'term_name']
-      j.term.genes <- gostres.dedup.1nd.merge.tab[j,'intersection.list']
+    for (j in seq(1,nrow(gostres.dedup.tab))){
+      j.term.name <- gostres.dedup.tab[j,'term_name']
+      j.term.genes <- gostres.dedup.tab[j,'intersection.list']
 
       a <- all(i.term.genes %in% j.term.genes) & (i.term.name != j.term.name)
       a.list <- c(a.list, a)
